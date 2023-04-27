@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+typedef struct {
+    int sal;
+    int wH;
+} Employee;
+void getInfo(Employee* emp, int s, int w) {
+    emp->sal = s;
+    emp->w = w;
+}
+void AddSal(Employee* emp) {
+    if (emp->sal < 500) {
+        emp->sal += 10;
+    }
+}
+void AddWork(Employee* emp) {
+    if (emp->wH > 6) {
+        emp->sal += 5;
+    }
+}
+int getSalary(Employee* emp) {
+    return emp->sal;
+}
+
+int main() {
+    Employee emp;
+    int sal, wH;
+    printf("Enter salary: ");
+    scanf("%d", &sal);
+    printf("Enter work hours per day: ");
+    scanf("%d", &wH);
+    getInfo(&emp, sal, wH);
+    AddSal(&emp);
+    AddWork(&emp);
+    printf("Final salary: $%d\n", getSalary(&emp));
+    return 0;
+}
